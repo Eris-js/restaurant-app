@@ -11,11 +11,10 @@ export default function Providers({
 }) {
     useEffect(() => {
         AOS.init({
-            mobile: false,
             duration: 800,
             easing: 'ease-out-cubic',
-            once: true,      // chỉ animate 1 lần
-            offset: 80,      // tránh bị header che
+            once: true,
+            offset: 80,
         });
     }, []);
 
