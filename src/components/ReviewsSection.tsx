@@ -2,23 +2,64 @@
 
 function SafetySection() {
     return (
-        <section className="py-16 bg-black text-white border-y border-gray-800">
-            <div className="container mx-auto px-4 text-center">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold uppercase relative inline-block pb-2 border-b-2 border-[#f2b84b]">
-                        Vấn Đề Vệ Sinh An Toàn Thực Phẩm
+        <section className="py-24 bg-black text-white border-y border-gray-800">
+            <div className="max-w-7xl mx-auto px-4">
+
+                {/* Title */}
+                <div
+                    className="text-center mb-16"
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                >
+                    <h2 className="text-3xl md:text-4xl font-bold uppercase inline-block">
+                        Vệ Sinh An Toàn Thực Phẩm
+                        <span className="block w-24 h-[3px] bg-[#f2b84b] mt-3 mx-auto" />
                     </h2>
                 </div>
-                <img src="/images/hinh-2-tri-ky.jpg" alt="Safety Food" className="mx-auto mb-8 rounded-lg shadow-lg max-h-96 object-cover" />
-                <div className="max-w-3xl mx-auto p-8 border border-gray-800 rounded-lg bg-[#1c1c1c]">
-                    <p className="text-lg italic text-[#f2b84b]">
-                        "Nhà hàng Hoa Viên Tri Kỷ đặc biệt quan tâm đến vấn đề an toàn vệ sinh thực phẩm, chỉ sử dụng những sản phẩm tươi, chất lượng tốt nhất được nhập riêng cho nhà hàng, luôn tuân thủ các quy định của Bộ Y Tế."
-                    </p>
+
+                {/* Content */}
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+
+                    {/* Image */}
+                    <div
+                        className="relative"
+                        data-aos="fade-right"
+                        data-aos-duration="1200"
+                    >
+                        <img
+                            src="/images/hinh-2-tri-ky.jpg"
+                            alt="An toàn vệ sinh thực phẩm"
+                            className="w-full h-full duration-700 hover:scale-105"
+                        />
+                    </div>
+
+                    {/* Quote */}
+                    <div
+                        className="relative bg-[#1c1c1c] border border-gray-800 rounded-xl p-10"
+                        data-aos="fade-left"
+                        data-aos-duration="1200"
+                    >
+                        <span className="absolute -top-6 left-6 text-6xl text-[#f2b84b] opacity-20">
+                            “
+                        </span>
+
+                        <p className="text-lg leading-relaxed italic text-gray-200">
+                            Nhà hàng Hoa Viên Tri Kỷ đặc biệt quan tâm đến vấn đề an toàn vệ sinh
+                            thực phẩm, chỉ sử dụng những sản phẩm tươi, chất lượng cao được nhập
+                            riêng cho nhà hàng, luôn tuân thủ nghiêm ngặt các quy định của Bộ Y Tế.
+                        </p>
+
+                        <div className="mt-6 text-sm text-[#f2b84b] font-semibold uppercase tracking-wider">
+                            Cam kết chất lượng & sức khỏe
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
     );
 }
+
 
 function ReviewsSection() {
     const reviews = [

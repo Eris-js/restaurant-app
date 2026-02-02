@@ -1,53 +1,44 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { ChevronRight } from 'lucide-react';
 
-type BreadcrumbProps = {
-    pageTitle?: string;
+type BreadcrumbItem = {
+    label: string;
+    href?: string;
 };
 
-export default function Breadcrumb({ pageTitle }: BreadcrumbProps) {
-    const pathname = usePathname();
+type BreadcrumbProps = {
+    items: BreadcrumbItem[];
+};
 
-    const segments = pathname
-        .split('/')
-        .filter(Boolean);
-
-    if (segments.length === 0) return null;
-
+export default function Breadcrumb({ items }: BreadcrumbProps) {
     return (
-        <section aria-label="Breadcrumb" className="mb-6 bg-black/50 p-4 rounded-md">
-            <nav aria-label="Breadcrumb" className="mb-6 bg-black/50 p-4 rounded-md">
-                <ol className="flex items-center flex-wrap text-sm text-gray-400">
-                    {/* Home */}
-                    <li className="flex items-center">
-                        <Link
-                            href="/"
-                            className="hover:text-[#f2b84b] transition-colors"
-                        >
-                            Trang chủ
-                        </Link>
-                    </li>
-                    {segments.map((segment, index) => {
-                        const href = '/' + segments.slice(0, index + 1).join('/');
-                        const isLast = index === segments.length - 1;
+        <div className="bg-gray-50 border-b border-gray-200">
+            <nav
+                aria-label="Breadcrumb"
+                className="max-w-7xl mx-auto px-4 py-3"
+            >
+                <ol className="flex items-center flex-wrap text-sm text-gray-600">
+                    {items.map((item, index) => {
+                        const isLast = index === items.length - 1;
 
                         return (
-                            <li key={href} className="flex items-center">
-                                <ChevronRight className="mx-2 w-4 h-4" />
+                            <li key={index} className="flex items-center">
+                                {index !== 0 && (
+                                    <ChevronRight className="mx-2 w-4 h-4 text-gray-400" />
+                                )}
 
-                                {isLast ? (
-                                    <span className="text-yellow-400 font-semibold capitalize">
-                                        {pageTitle ?? segment.replace(/-/g, ' ')}
+                                {isLast || !item.href ? (
+                                    <span className="font-semibold text-[#f2b84b]">
+                                        {item.label}
                                     </span>
                                 ) : (
                                     <Link
-                                        href={href}
-                                        className="hover:text-[#f2b84b] capitalize transition-colors"
+                                        href={item.href}
+                                        className="hover:text-[#f2b84b] transition-colors"
                                     >
-                                        {decodeURIComponent(segment).replace(/-/g, ' ')}
+                                        {item.label}
                                     </Link>
                                 )}
                             </li>
@@ -55,6 +46,6 @@ export default function Breadcrumb({ pageTitle }: BreadcrumbProps) {
                     })}
                 </ol>
             </nav>
-        </section>
+        </div>
     );
 }

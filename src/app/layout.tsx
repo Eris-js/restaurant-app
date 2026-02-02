@@ -7,6 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from '@/components/BackToTop';
+import Providers from '@/app/providers';
 
 import Script from "next/script";
 
@@ -39,11 +40,13 @@ export default function RootLayout({
       />
       <RestaurantSchema />
       <body className={`${inter.className} flex flex-col min-h-screen bg-gray-50 text-gray-900`}>
-        <Navbar />
-        <main className="grow">
-          {children}
-        </main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className="grow">
+            {children}
+          </main>
+          <Footer />
+        </Providers>
         <BackToTop />
       </body>
     </html>

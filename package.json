@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^6.1.10",
+    "aos": "^2.3.4",
     "bootstrap-icons": "^1.13.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",

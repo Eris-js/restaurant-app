@@ -12,64 +12,74 @@ export const metadata: Metadata = {
 export default function AboutPage() {
     return (
         <>
-            <HeroBreadcrumb
-                title="Giới thiệu"
-                background="/images/1.jpg"
+            {/* Breadcrumb */}
+            <Breadcrumb
+                items={[
+                    { label: 'Trang chủ', href: '/' },
+                    { label: 'Giới thiệu', href: '/gioi-thieu' }
+                ]}
             />
-            <section className="max-w-7xl mx-auto px-4 pt-10 pb-24">
-                <div className="relative mb-16 rounded-2xl overflow-hidden shadow-2xl">
+            <main className="max-w-7xl mx-auto px-4 pt-12 pb-24 text-gray-800">
+                {/* Title */}
+                <header className="mb-12 max-w-3xl">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-3">
+                        Giới thiệu
+                    </h1>
+                    <p className="text-gray-500 text-lg">
+                        Hành trình hơn 30 năm xây dựng và phát triển của Hoa Viên Tri Kỷ
+                    </p>
+                </header>
+
+                {/* Hero image */}
+                <div className="relative w-full h-105 rounded-2xl overflow-hidden mb-10 shadow-md">
                     <Image
                         src="/images/bg.jpg"
-                        alt="Nhà hàng Hoa Viên Tri Kỷ"
-                        width={1600}
-                        height={800}
-                        className="w-full h-full object-cover"
+                        alt="Hoa Viên Tri Kỷ"
+                        fill
                         priority
+                        className="object-cover"
                     />
                 </div>
 
-                <div className="mb-12 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-wide">
-                        <span className="text-[#f2b84b]">Hoa Viên</span> Tri Kỷ
-                    </h1>
-                    <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
-                        Hơn 35 năm gìn giữ tinh hoa ẩm thực và không gian gặp gỡ
-                    </p>
-                </div>
-
                 {/* Content */}
-                <div className="prose prose-lg prose-invert max-w-none text-black leading-relaxed mb-10">
-                    <p>
-                        <strong className="text-black">Hoa Viên Tri Kỷ</strong> tiền thân là nhà
-                        hàng <strong>Tri Kỷ</strong> tại số 82 Trần Huy Liệu và nhà hàng
-                        <strong> Tri Kỷ 2</strong> tại 742/8 Nguyễn Kiệm, được sáng lập từ năm
-                        1987. Tên gọi <em>“Nhà hàng Tri Kỷ”</em> đã trở nên quen thuộc với thực
-                        khách trong và ngoài nước từ thập niên 90.
-                    </p>
+                <article className="leading-relaxed text-gray-700 text-[17px] max-w-4xl mx-auto space-y-6">
+                    <div className="space-y-4">
+                        <p>
+                            <strong className="text-[#f2b84b] font-semibold">
+                                Hoa Viên Tri Kỷ
+                            </strong>{" "}
+                            tiền thân là nhà hàng Tri Kỷ, tại số 82 Trần Huy liệu và nhà hàng “Tri Kỷ 2” tại 742/8 Nguyễn Kiệm, được thành lập từ năm 1987...cái tên “nhà hàng Tri Kỷ” đã nổi tiếng trong và ngoài nước từ thập niên 90. Hiện nay “Hoa Viên Tri Kỷ” được xây dựng trên khuôn viên hơn 2.500 m2 tọa lạc tại số 123 Hồng Hà, P9, Q. Phú Nhuận, liền kề công viên Gia Định, giáp ranh 3 quận: Phú Nhuận, Gò Vấp, Tân Bình cách sân bay Tân Sơn Nhất 10 phút đi bộ.
+                        </p>
 
-                    <p>
-                        Hiện nay, Hoa Viên Tri Kỷ được xây dựng trên khuôn viên hơn
-                        <strong> 2.500 m²</strong> tại số 123 Hồng Hà, Phường 9, Quận Phú Nhuận,
-                        liền kề công viên Gia Định và chỉ cách sân bay Tân Sơn Nhất 10 phút đi
-                        bộ.
-                    </p>
-                </div>
+                        <p>
+                            Nhà hàng Hoa Viên Tri Kỷ trải rộng trong khuôn viên xanh mát với thiết kế mang phong cách bày trí tinh tế kiểu Châu Âu. Khuôn viên sân vườn rợp trong tán cây xanh thích hợp cho những bữa ăn sáng và bữa gặp gỡ, khu vực trung tâm lại mang đến cảm giác  nhẹ nhàng, ấm cúng, tinh tế của không gian nhà xưa. Đặc biệt với các phòng VIP của nhà hàng thể hiện sự chuẩn mực và sang trọng dành cho những bữa ăn mang tính riêng tư, những buổi gặp gỡ khách hàng quan trọng. Bên cạnh đó, nhà hàng Hoa Viên Tri Kỷ còn có một sảnh tiệc gần 200 khách để tổ chức Tiệc cưới, hội nghị, liên hoan sinh nhật và họp mặt công ty bạn bè … đem đến cho quý vị sự lựa chọn một không gian riêng cho buổi tiệc của mình.
+                        </p>
+                    </div>
+                </article>
 
-                <div className="prose prose-lg prose-invert max-w-none text-black leading-relaxed">
-                    <p>
-                        Không gian nhà hàng mang phong cách bày trí tinh tế kiểu Châu Âu,
-                        hòa quyện giữa thiên nhiên xanh mát và nét ấm cúng của kiến trúc
-                        truyền thống. Khuôn viên sân vườn rợp bóng cây phù hợp cho bữa sáng,
-                        gặp gỡ thân mật.
-                    </p>
-
-                    <p>
-                        Các phòng <strong>VIP sang trọng</strong> đáp ứng những buổi gặp gỡ
-                        riêng tư, cùng sảnh tiệc gần <strong>200 khách</strong> là lựa chọn
-                        lý tưởng cho tiệc cưới, hội nghị, sinh nhật và các sự kiện quan trọng.
-                    </p>
-                </div>
-            </section>
+                {/* Divider */}
+                <div className="my-20 border-t border-gray-200" />
+                {/* Highlight */}
+                <section className="grid md:grid-cols-3 gap-8 text-center">
+                    {[
+                        ['30+ năm', 'Kinh nghiệm'],
+                        ['2500m²', 'Không gian'],
+                        ['200+', 'Khách/sảnh'],
+                    ].map(([title, desc]) => (
+                        <div
+                            key={title}
+                            className="p-8 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
+                        >
+                            <div className="text-3xl font-bold text-[#f2b84b] mb-2">
+                                {title}
+                            </div>
+                            <div className="text-gray-500 uppercase tracking-wide text-sm">
+                                {desc}
+                            </div>
+                        </div>
+                    ))}
+                </section>
+            </main>
         </>
     );
 }

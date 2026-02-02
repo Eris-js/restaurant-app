@@ -1,4 +1,10 @@
 
+const services = [
+    { title: 'Alacarte', img: '/images/services/2.jpg' },
+    { title: 'Điểm tâm', img: '/images/services/1.jpg' },
+    { title: 'Khách đoàn', img: '/images/services/1.jpg' },
+    { title: 'Đặt tiệc', img: '/images/services/3.jpg' },
+];
 
 export default function OurServices() {
     return (
@@ -10,30 +16,32 @@ export default function OurServices() {
                     </h2>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <div className="bg-black aspect-square md:p-4 p-1 rounded-lg shadow-lg text-center">
-                        <div className="w-full h-full mb-4">
-                            <img src="/images/services/2.jpg" alt="Alacarte" className="w-full h-full object-cover rounded-lg" />
+                    {services.map((item, index) => (
+                        <div
+                            key={item.title}
+                            data-aos="fade-up"
+                            data-aos-delay={index * 150}
+                            data-aos-duration="800"
+                            className="
+        bg-black rounded-xl shadow-lg text-center
+        p-3 md:p-4
+        hover:shadow-xl
+        transition-all
+      "
+                        >
+                            <div className="aspect-square mb-4 overflow-hidden rounded-lg">
+                                <img
+                                    src={item.img}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform"
+                                />
+                            </div>
+
+                            <h3 className="text-lg md:text-xl font-semibold uppercase tracking-wide">
+                                {item.title}
+                            </h3>
                         </div>
-                        <h3 className="text-xl font-semibold mb-4 uppercase">Alacarte</h3>
-                    </div>
-                    <div className="bg-black aspect-square md:p-4 p-1 rounded-lg shadow-lg text-center">
-                        <div className="w-full h-full mb-4">
-                            <img src="/images/services/1.jpg" alt="Alacarte" className="w-full h-full object-cover rounded-lg" />
-                        </div>
-                        <h3 className="text-xl font-semibold mb-4 uppercase">Điểm tâm</h3>
-                    </div>
-                    <div className="bg-black aspect-square md:p-4 p-1 rounded-lg shadow-lg text-center">
-                        <div className="w-full h-full mb-4">
-                            <img src="/images/services/1.jpg" alt="Alacarte" className="w-full h-full object-cover rounded-lg" />
-                        </div>
-                        <h3 className="text-xl font-semibold mb-4 uppercase">Khách đoàn</h3>
-                    </div>
-                    <div className="bg-black aspect-square md:p-4 p-1 rounded-lg shadow-lg text-center">
-                        <div className="w-full h-full mb-4">
-                            <img src="/images/services/3.jpg" alt="Alacarte" className="w-full h-full object-cover rounded-lg" />
-                        </div>
-                        <h3 className="text-xl font-semibold mb-4 uppercase">Đặt tiệc</h3>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>
