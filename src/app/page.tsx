@@ -4,6 +4,8 @@ import AboutSection from '@/components/AboutSection';
 import GallerySection from '@/components/GallerySection';
 import MenuSection from '@/components/MenuSection';
 import OurServices from '@/components/OurServices';
+import VideoServices from '@/components/VideoSection';
+
 import MapSection from '@/components/MapSection';
 import { SafetySection, ReviewsSection } from '@/components/ReviewsSection';
 import dbConnect from '@/lib/db';
@@ -44,6 +46,7 @@ export default async function Home() {
       {/* <HeroSlider sliders={sliders} /> */}
       <HeroSection />
       <AboutSection />
+      <VideoServices />
       <OurServices />
       <GallerySection />
       <SafetySection />
