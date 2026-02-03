@@ -14,10 +14,10 @@ type BreadcrumbProps = {
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
     return (
-        <div className="bg-gray-50 border-b border-gray-200">
+        <div className="bg-gray-100 border-b border-gray-100">
             <nav
                 aria-label="Breadcrumb"
-                className="max-w-7xl mx-auto px-4 py-3"
+                className="max-w-7xl mx-auto px-4 py-6"
             >
                 <ol className="flex items-center flex-wrap text-sm text-gray-600">
                     {items.map((item, index) => {

@@ -83,7 +83,7 @@ export default function HeroSection() {
                     </Link>
 
                     <Link
-                        href="/menu"
+                        href="/thuc-don/alacarte"
                         className="bg-white text-black px-6 py-3 text-sm uppercase tracking-widest hover:bg-[#f2b84b] transition"
                     >
                         Xem thực đơn

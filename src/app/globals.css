@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* @import "@tailwindcss/typography"; */
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
@@ -65,4 +67,21 @@ section {
   background-color: rgba(0, 0, 0, 0.61);
   transition: transform .3s, opacity .6s;
   pointer-events: none;
+}
+
+.masonry-grid {
+  display: flex;
+  margin-left: -16px;
+  /* gap */
+  width: auto;
+}
+
+.masonry-grid_column {
+  padding-left: 16px;
+  background-clip: padding-box;
+}
+
+.masonry-grid_column>a {
+  margin-bottom: 16px;
+  display: block;
 }

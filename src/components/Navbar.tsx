@@ -36,10 +36,10 @@ export default function Navbar() {
       name: 'Thực Đơn',
       href: '#', // có thể để hoặc bỏ
       children: [
-        { name: 'Alacarte', href: '/menu/alacarte' },
-        { name: 'Điểm tâm', href: '/menu/diem-tam' },
-        { name: 'Khách đoàn', href: '/menu/khach-doan' },
-        { name: 'Đặt tiệc', href: '/menu/dat-tiec' },
+        { name: 'Alacarte', href: '/thuc-don/alacarte' },
+        { name: 'Điểm tâm', href: '/thuc-don/diem-tam' },
+        { name: 'Khách đoàn', href: '/thuc-don/khach-doan' },
+        { name: 'Đặt tiệc', href: '/thuc-don/dat-tiec' },
       ],
     },
   ];

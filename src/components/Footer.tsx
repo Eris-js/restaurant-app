@@ -29,7 +29,7 @@ export default function Footer() {
                   <strong className="text-white">Điện thoại:</strong> <a href="tel:0838423487" target='_blank' className="text-[#f2b84b] hover:text-yellow-600">(08) 3842 3487</a>
                 </li>
                 <li>
-                  <strong className="text-white">Email:</strong> <a href="mailto:hoavientriky123hongha@gmail.com" target='_blank' className="text-[#f2b84b] hover:text-yellow-600">hoavientriky123hongha@gmail.com</a>
+                  <strong className="text-white">Email:</strong> <a href="mailto:hoavientriky123hongha@gmail.com" target='_blank' className="text-[#f2b84b] hover:text-yellow-600">sale.hoavientriky@pnco.vn</a>
                 </li>
               </ul>
             </div>
@@ -39,7 +39,7 @@ export default function Footer() {
               <h3 className="text-[#f2b84b] font-bold text-lg mb-4 uppercase">Giờ Mở Cửa</h3>
               <div className="text-gray-400 mb-6">
                 <p>Thứ 2 - Chủ Nhật</p>
-                <p className="text-xl text-white font-bold">7:00 - 24:00</p>
+                <p className="text-xl text-white font-bold">7:00 - 23:00</p>
               </div>
               <div className="flex space-x-4">
                 {/* Social Icons Placeholder */}
