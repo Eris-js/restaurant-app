@@ -76,9 +76,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             name: "__Secure-next-auth.session-token",
             options: {
                 httpOnly: true,
-                sameSite: "lax",
+                sameSite: "none",
                 path: "/",
                 secure: true, // 🔥 HTTPS only (Vercel)
+            },
+        },
+        callbackUrl: {
+            name: `__Secure-next-auth.callback-url`,
+            options: {
+                sameSite: "none",
+                path: "/",
+                secure: true,
             },
         },
     },
