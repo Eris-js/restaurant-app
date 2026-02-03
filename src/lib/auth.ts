@@ -62,9 +62,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 (session.user as any).id = token.id;
             }
             return session;
-        }
+        },
+        async redirect({ url, baseUrl }) {
+            if (url.startsWith("/")) return `${baseUrl}${url}`;
+            if (new URL(url).origin === baseUrl) return url;
+            return baseUrl;
+        },
     },
     secret: process.env.NEXTAUTH_SECRET,
+    trustHost: true,
+    cookies: {
+        sessionToken: {
+            name: "__Secure-next-auth.session-token",
+            options: {
+                httpOnly: true,
+                sameSite: "lax",
+                path: "/",
+                secure: true, // 🔥 HTTPS only (Vercel)
+            },
+        },
+    },
     pages: {
         signIn: '/login',
     }
