@@ -27,13 +27,16 @@ async function dbConnect() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000, // ✅ Timeout nhanh hơn
+      socketTimeoutMS: 45000,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
       return mongoose.connection;
     });
   }
-  
+
   try {
     cached.conn = await cached.promise;
   } catch (e) {

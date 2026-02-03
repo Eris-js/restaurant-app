@@ -13,7 +13,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 password: { label: "Password", type: "password" },
             },
             async authorize(credentials) {
-
+                console.log("🔐 Login attempt:", credentials?.email);
                 if (!credentials?.email || !credentials?.password) {
                     throw new Error("Vui lòng nhập email và mật khẩu");
                 }
@@ -71,22 +71,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     secret: process.env.NEXTAUTH_SECRET,
     trustHost: true,
+    useSecureCookies: process.env.NODE_ENV === 'production',
     cookies: {
         sessionToken: {
-            name: "__Secure-next-auth.session-token",
+            name: process.env.NODE_ENV === 'production'
+                ? "__Secure-next-auth.session-token"
+                : "next-auth.session-token",
             options: {
                 httpOnly: true,
-                sameSite: "none",
+                sameSite: "lax", // ✅ Đổi từ "none" → "lax" nếu cùng domain
                 path: "/",
-                secure: true, // 🔥 HTTPS only (Vercel)
-            },
-        },
-        callbackUrl: {
-            name: `__Secure-next-auth.callback-url`,
-            options: {
-                sameSite: "none",
-                path: "/",
-                secure: true,
+                secure: process.env.NODE_ENV === 'production',
             },
         },
     },
