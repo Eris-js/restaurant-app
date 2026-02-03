@@ -17,7 +17,7 @@ export async function GET(request: Request) {
         const galleries = await Gallery.find(query).sort({ createdAt: -1 });
 
         // Flatten all images from all albums in this category
-        const allImages = galleries.flatMap(g => g.images.map(img => ({
+        const allImages = galleries.flatMap(g => g.images.map((img: string) => ({
             url: img,
             title: g.title,
             category: g.category,
