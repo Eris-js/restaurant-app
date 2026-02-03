@@ -6,7 +6,7 @@ export async function proxy(req: NextRequest) {
     const session = await auth();
 
     const { pathname } = req.nextUrl;
-
+    console.log("🛡️ Protecting route:", pathname, "Session:", session);
     // Chưa login → chặn admin
     if (!session && pathname.startsWith("/admin")) {
         return NextResponse.redirect(
