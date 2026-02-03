@@ -62,29 +62,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 (session.user as any).id = token.id;
             }
             return session;
-        },
-        async redirect({ url, baseUrl }) {
-            if (url.startsWith("/")) return `${baseUrl}${url}`;
-            if (new URL(url).origin === baseUrl) return url;
-            return baseUrl;
-        },
+        }
     },
     secret: process.env.NEXTAUTH_SECRET,
     trustHost: true,
-    useSecureCookies: process.env.NODE_ENV === 'production',
-    cookies: {
-        sessionToken: {
-            name: process.env.NODE_ENV === 'production'
-                ? "__Secure-next-auth.session-token"
-                : "next-auth.session-token",
-            options: {
-                httpOnly: true,
-                sameSite: "lax", // ✅ Đổi từ "none" → "lax" nếu cùng domain
-                path: "/",
-                secure: process.env.NODE_ENV === 'production',
-            },
-        },
-    },
     pages: {
         signIn: '/login',
     }
