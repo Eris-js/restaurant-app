@@ -64,6 +64,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             return session;
         }
     },
+    session: {
+        strategy: "jwt", // ✅ QUAN TRỌNG: Thêm dòng này
+    },
     secret: process.env.NEXTAUTH_SECRET,
     trustHost: true,
     pages: {
