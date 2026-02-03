@@ -1,6 +1,6 @@
 'use server';
 
-import { signIn } from '@/lib/auth';
+import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 
 export async function authenticate(
@@ -8,14 +8,16 @@ export async function authenticate(
     formData: FormData,
 ) {
     try {
-        await signIn('credentials', formData);
+        // Convert FormData to object to add redirectTo
+        const data = Object.fromEntries(formData);
+        await signIn('credentials', { ...data, redirectTo: '/admin' });
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
                 case 'CredentialsSignin':
-                    return 'Invalid credentials.';
+                    return 'Email hoặc mật khẩu không chính xác.';
                 default:
-                    return 'Something went wrong.';
+                    return 'Đã có lỗi xảy ra. Vui lòng thử lại.';
             }
         }
         throw error;

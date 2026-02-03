@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { redirect } from "next/navigation";
-import { auth, signOut } from '@/lib/auth';
+import { auth, signOut } from '@/auth';
 import {
     Users,
     FileText,
-    Image as ImageIcon,
+    ImageIcon,
     Tag,
     MessageSquare,
     LayoutDashboard,
@@ -23,7 +23,7 @@ export default async function AdminLayout({
         { name: 'Người dùng', href: '/admin/users', icon: Users },
         { name: 'Bài viết', href: '/admin/articles', icon: FileText },
         { name: 'Hình ảnh', href: '/admin/gallery', icon: ImageIcon },
-        { name: 'Khuyến mãi', href: '/admin/promotions', icon: Tag },
+        { name: 'Khuyên mãi', href: '/admin/promotions', icon: Tag },
         { name: 'Popups', href: '/admin/popups', icon: MessageSquare },
     ];
 
@@ -36,14 +36,13 @@ export default async function AdminLayout({
     if (session.user && (session.user as any).role !== "admin") {
         redirect("/403");
     }
-    
+
     return (
         <div className="flex h-screen bg-gray-50 text-gray-900 font-sans">
             {/* Sidebar */}
             <aside className="w-72 bg-white border-r border-gray-200 flex flex-col shadow-sm z-10">
                 <div className="p-8 border-b border-gray-100 flex items-center justify-center">
-                    {/* Placeholder for Logo */}
-                    <div className="text-2xl font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                    <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                         CMS Admin
                     </div>
                 </div>

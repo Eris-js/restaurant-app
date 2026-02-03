@@ -1,10 +1,12 @@
 import NextAuth from 'next-auth';
+import { authConfig } from "./auth.config";
 import Credentials from 'next-auth/providers/credentials';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import bcrypt from 'bcryptjs';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+    ...authConfig,
     providers: [
         Credentials({
             name: "Credentials",
@@ -13,7 +15,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 password: { label: "Password", type: "password" },
             },
             async authorize(credentials) {
-                console.log("🔐 Login attempt:", credentials?.email);
                 if (!credentials?.email || !credentials?.password) {
                     throw new Error("Vui lòng nhập email và mật khẩu");
                 }
@@ -34,42 +35,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                     throw new Error("Mật khẩu không chính xác");
                 }
 
-                if (passwordsMatch) {
-                    return {
-                        id: user._id.toString(),
-                        name: user.name,
-                        email: user.email,
-                        image: user.image,
-                        role: user.role,
-                    };
-                }
-
-                return null;
+                return {
+                    id: user._id.toString(),
+                    name: user.name,
+                    email: user.email,
+                    image: user.image,
+                    role: user.role,
+                };
             },
         }),
     ],
-    callbacks: {
-        async jwt({ token, user }) {
-            if (user) {
-                token.role = (user as any).role;
-                token.id = user.id;
-            }
-            return token;
-        },
-        async session({ session, token }) {
-            if (token && session.user) {
-                (session.user as any).role = token.role;
-                (session.user as any).id = token.id;
-            }
-            return session;
-        }
-    },
     session: {
-        strategy: "jwt", // ✅ QUAN TRỌNG: Thêm dòng này
+        strategy: "jwt",
     },
-    secret: process.env.NEXTAUTH_SECRET,
-    trustHost: true,
-    pages: {
-        signIn: '/login',
-    }
+    // Secret is automatically picked up from AUTH_SECRET env var in Auth.js v5
+    // but we keep process.env to be safe and compatible with NEXTAUTH_SECRET
+    secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
+    trustHost: true, // Recommended for Vercel/proxies
 });
