@@ -3,9 +3,15 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function proxy(req: NextRequest) {
-    const session = await auth();
 
     const { pathname } = req.nextUrl;
+    // ✅ QUAN TRỌNG: Bỏ qua NextAuth routes
+    if (pathname.startsWith("/api/auth")) {
+        return NextResponse.next();
+    }
+
+    const session = await auth();
+
     console.log("🛡️ Protecting route:", pathname, "Session:", session);
     // Chưa login → chặn admin
     if (!session && pathname.startsWith("/admin")) {
@@ -23,5 +29,5 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/admin/:path*"],
+    matcher: ["/admin/:path*", "/api/auth/:path*"],
 };

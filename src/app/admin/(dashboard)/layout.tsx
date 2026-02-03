@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { redirect } from "next/navigation";
 import { auth, signOut } from '@/lib/auth';
 import {
     Users,
@@ -26,6 +27,16 @@ export default async function AdminLayout({
         { name: 'Popups', href: '/admin/popups', icon: MessageSquare },
     ];
 
+    // Chưa login
+    if (!session) {
+        redirect("/login?callbackUrl=/admin");
+    }
+
+    // Không phải admin
+    if (session.user && (session.user as any).role !== "admin") {
+        redirect("/403");
+    }
+    
     return (
         <div className="flex h-screen bg-gray-50 text-gray-900 font-sans">
             {/* Sidebar */}
