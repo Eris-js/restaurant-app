@@ -2,6 +2,8 @@ import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const publicPaths = ['/login', '/api/auth'];
+
 export async function proxy(req: NextRequest) {
     const token = await getToken({
         req,
@@ -10,16 +12,15 @@ export async function proxy(req: NextRequest) {
 
     const { pathname } = req.nextUrl;
 
-    // Chưa đăng nhập
-    if (!token) {
-        if (pathname.startsWith("/admin")) {
-            return NextResponse.redirect(new URL("/login", req.url));
-        }
-        return NextResponse.next();
+    // Chưa login → chặn admin
+    if (!token && pathname.startsWith("/admin")) {
+        return NextResponse.redirect(
+            new URL(`/login?callbackUrl=${encodeURIComponent(pathname)}`, req.url)
+        );
     }
 
-    // Admin
-    if (pathname.startsWith("/admin") && token.role !== "admin") {
+    // Có token nhưng không phải admin
+    if (token && pathname.startsWith("/admin") && token.role !== "admin") {
         return NextResponse.redirect(new URL("/403", req.url));
     }
 
