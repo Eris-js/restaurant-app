@@ -9,7 +9,7 @@ export async function proxy(req: NextRequest) {
         req,
         secret: process.env.NEXTAUTH_SECRET,
     });
-
+    console.log(token)
     const { pathname } = req.nextUrl;
 
     // Chưa login → chặn admin
