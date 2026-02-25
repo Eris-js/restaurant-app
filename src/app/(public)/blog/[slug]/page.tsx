@@ -2,6 +2,7 @@ import dbConnect from '@/lib/db';
 import Article from '@/models/Article';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +21,39 @@ async function getRelatedArticles(slug: string) {
         .sort({ createdAt: -1 })
         .limit(3)
         .lean();
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const article = await getArticle(slug);
+
+    if (!article) return { title: 'Not Found' };
+
+    const title = article.title;
+    const description = article.description || `Đọc bài viết ${article.title} tại Nhà Hàng Hoa Viên Tri Kỷ`;
+
+    return {
+        title,
+        description,
+        openGraph: {
+            title,
+            description,
+            images: [
+                {
+                    url: article.thumbnail,
+                }
+            ],
+            type: 'article',
+            publishedTime: new Date(article.createdAt).toISOString(),
+            authors: ['Admin'],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: [article.thumbnail],
+        }
+    };
 }
 
 export default async function ArticleDetail({

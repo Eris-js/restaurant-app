@@ -2,6 +2,7 @@ import dbConnect from '@/lib/db';
 import Gallery from '@/models/Gallery';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
 export async function GET() {
   await dbConnect();
   try {
@@ -22,3 +23,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error: 'Failed to create gallery item' }, { status: 400 });
   }
 }
+

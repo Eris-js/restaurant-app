@@ -1,9 +1,9 @@
 
 const services = [
     { title: 'Alacarte', img: '/images/services/2.jpg' },
-    { title: 'Điểm tâm', img: '/images/services/1.jpg' },
+    { title: 'Điểm tâm', img: '/images/services/4.jpg' },
     { title: 'Khách đoàn', img: '/images/services/1.jpg' },
-    { title: 'Đặt tiệc', img: '/images/services/3.jpg' },
+    { title: 'Đặt tiệc', img: '/images/services/5.jpg' },
 ];
 
 export default function OurServices() {

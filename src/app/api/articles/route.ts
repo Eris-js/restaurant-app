@@ -3,6 +3,7 @@ import Article from '@/models/Article';
 import { NextResponse } from 'next/server';
 import { auth } from '@/auth';
 
+export const dynamic = 'force-dynamic';
 export async function GET() {
     await dbConnect();
     try {
@@ -28,3 +29,4 @@ export async function POST(req: Request) {
         return NextResponse.json({ success: false, error: 'Failed to create article' }, { status: 400 });
     }
 }
+

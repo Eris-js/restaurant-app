@@ -2,6 +2,8 @@ import dbConnect from '@/lib/db';
 import Promotion from '@/models/Promotion';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: Request) {
   await dbConnect();
   const { searchParams } = new URL(req.url);
@@ -10,10 +12,10 @@ export async function GET(req: Request) {
   try {
     const query: any = {};
     if (activeOnly) {
-        const now = new Date();
-        query.startDate = { $lte: now };
-        query.endDate = { $gte: now };
-        query.isActive = true;
+      const now = new Date();
+      query.startDate = { $lte: now };
+      query.endDate = { $gte: now };
+      query.isActive = true;
     }
     const promotions = await Promotion.find(query).sort({ endDate: 1 });
     return NextResponse.json({ success: true, data: promotions });

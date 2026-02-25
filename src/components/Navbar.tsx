@@ -53,7 +53,7 @@ export default function Navbar() {
     <header className={`${isScrolled ? 'fixed translate-y-0' : 'relative'} flex top-0 w-full h-20 z-50 justify-center items-center transition-all duration-300 ease-out bg-black/90 backdrop-blur-sm py-2 shadow-md`}>
       <div className="container max-w-7xl mx-auto px-4 flex justify-between items-center text-white">
         <Link href="/" className="flex items-center">
-          <img
+          <Image
             src="/images/logo/logo.png"
             alt="Logo"
             width={40}

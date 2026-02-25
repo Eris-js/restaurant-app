@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Gallery from '@/models/Gallery';
 
+export const dynamic = 'force-dynamic';
 export async function GET(request: Request) {
     try {
         const { searchParams } = new URL(request.url);
@@ -29,3 +30,4 @@ export async function GET(request: Request) {
         return NextResponse.json({ error: 'Failed to fetch images' }, { status: 500 });
     }
 }
+

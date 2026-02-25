@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Popup from '@/models/Popup';
 
+export const dynamic = 'force-dynamic';
 export async function GET() {
     await dbConnect();
 
@@ -14,3 +15,4 @@ export async function GET() {
 
     return NextResponse.json(popup);
 }
+

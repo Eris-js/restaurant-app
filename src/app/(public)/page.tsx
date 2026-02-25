@@ -13,6 +13,7 @@ import Slider from '@/models/Slider';
 import Article from '@/models/Article';
 import Promotion from '@/models/Promotion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 async function getData() {
   await dbConnect();
@@ -63,7 +64,7 @@ export default async function Home() {
             {promotions.map((promo: any) => (
               <div key={promo._id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 flex flex-col h-full border border-gray-100">
                 <div className="h-56 relative bg-gray-200">
-                  <img src={promo.thumbnail} alt={promo.title} className="w-full h-full object-cover" />
+                  <Image src={promo.thumbnail} alt={promo.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
                 <div className="p-6 flex flex-col grow">
                   <h3 className="text-xl font-bold mb-3 text-gray-800">{promo.title}</h3>
@@ -106,10 +107,12 @@ export default async function Home() {
               >
                 {/* Thumbnail */}
                 <div className="relative h-56 overflow-hidden">
-                  <img
+                  <Image
                     src={article.thumbnail}
                     alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition" />
                 </div>

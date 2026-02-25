@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -12,10 +13,10 @@ export default function Footer() {
               <h3 className="text-[#f2b84b] font-bold text-lg mb-4 uppercase">Địa Chỉ</h3>
               <p className="text-gray-400 mb-4">
                 Nhà Hàng Tri Kỷ<br />
-                123 Hồng Hà, P.9, Q.Phú Nhuận. TP.HCM
+                123 Hồng Hà, Phường Đức Nhuận, Thành Phố Hồ Chí Minh
               </p>
               {/* Logo Placeholder */}
-              <img src="/images/logo/logo1.png" alt="Logo" className="w-56 mb-4" />
+              <Image src="/images/logo/logo1.png" alt="Logo" width={224} height={80} className="w-56 mb-4 object-contain" />
             </div>
 
             {/* Contact */}
@@ -26,7 +27,7 @@ export default function Footer() {
                   <strong className="text-white">Đặt bàn:</strong> <a href="tel:0964113719" target='_blank' className="text-[#f2b84b] hover:text-yellow-600">0964.113.719</a>
                 </li>
                 <li>
-                  <strong className="text-white">Điện thoại:</strong> <a href="tel:0838423487" target='_blank' className="text-[#f2b84b] hover:text-yellow-600">(08) 3842 3487</a>
+                  <strong className="text-white">Điện thoại:</strong> <a href="tel:0838423487" target='_blank' className="text-[#f2b84b] hover:text-yellow-600">(028) 3842 3487</a>
                 </li>
                 <li>
                   <strong className="text-white">Email:</strong> <a href="mailto:hoavientriky123hongha@gmail.com" target='_blank' className="text-[#f2b84b] hover:text-yellow-600">sale.hoavientriky@pnco.vn</a>
@@ -39,22 +40,22 @@ export default function Footer() {
               <h3 className="text-[#f2b84b] font-bold text-lg mb-4 uppercase">Giờ Mở Cửa</h3>
               <div className="text-gray-400 mb-6">
                 <p>Thứ 2 - Chủ Nhật</p>
-                <p className="text-xl text-white font-bold">7:00 - 23:00</p>
+                <p className="text-xl text-white font-bold">7:00 - 22:00</p>
               </div>
               <div className="flex space-x-4">
                 {/* Social Icons Placeholder */}
 
                 <div className="w-8 h-8 bg-gray-700 rounded-full hover:bg-black/50 flex items-center justify-center transition-colors">
-                  <a className="bi bi-twitter-x" href="#" aria-label='X' title='X'></a>
+                  <a className="bi bi-twitter-zalo" href="https://zalo.me/0964113719" target="_blank" aria-label='Zalo' title='Zalo'></a>
                 </div>
                 <div className="w-8 h-8 bg-gray-700 rounded-full hover:bg-red-500 flex items-center justify-center transition-colors">
-                  <a className="bi bi-youtube" href="#" aria-label='Youtube' title='Youtube'></a>
+                  <a className="bi bi-youtube" href="#" target="_blank" aria-label='Youtube' title='Youtube'></a>
                 </div>
                 <div className="w-8 h-8 bg-gray-700 rounded-full hover:bg-blue-500 flex items-center justify-center transition-colors">
-                  <a className="bi bi-facebook" href="#" aria-label='Facebook' title='Facebook'></a>
+                  <a className="bi bi-facebook" href="https://www.facebook.com/profile.php?id=61587653834098" target="_blank" aria-label='Facebook' title='Facebook'></a>
                 </div>
                 <div className="w-8 h-8 bg-gray-700 rounded-full hover:bg-blue-700 flex items-center justify-center transition-colors">
-                  <a className="bi bi-linkedin" href="#" aria-label='LinkedIn' title='LinkedIn'></a>
+                  <a className="bi bi-linkedin" href="#" target="_blank" aria-label='LinkedIn' title='LinkedIn'></a>
                 </div>
               </div>
             </div>
