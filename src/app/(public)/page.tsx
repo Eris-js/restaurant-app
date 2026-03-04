@@ -94,40 +94,58 @@ export default async function Home() {
       )}
 
       {/* Articles Section */}
-      {articles.map((article: any) => (
-        <Link
-          key={article._id}
-          href={`/blog/${article.slug}`}
-          className="group block bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
-        >
-          {/* Thumbnail */}
-          <div className="relative h-56 overflow-hidden">
-            <Image
-              src={article.thumbnail}
-              alt={article.title}
-              fill
-              className="object-cover group-hover:scale-110 transition-transform duration-700"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition" />
-          </div>
-
-          {/* Content */}
-          <div className="p-6">
-            <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition">
-              {article.title}
-            </h3>
-
-            <p className="text-sm text-gray-700 line-clamp-2 mt-2">
-              {stripHtml(article.content).slice(0, 100)}...
+      {articles.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          {/* Heading */}
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Tin tức & Bài viết
+            </h2>
+            <p className="mt-3 text-gray-500 max-w-xl mx-auto">
+              Cập nhật những câu chuyện mới nhất từ gian bếp và đội ngũ của chúng tôi
             </p>
-
-            <span className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-orange-700 border-b border-orange-700 group-hover:text-orange-500 group-hover:border-orange-500">
-              Xem thêm →
-            </span>
           </div>
-        </Link>
-      ))}
+
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
+            {articles.map((article: any) => (
+              <Link
+                key={article._id}
+                href={`/blog/${article.slug}`}
+                className="group block h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >
+                {/* Thumbnail */}
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src={article.thumbnail}
+                    alt={article.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition" />
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col h-full">
+                  <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition">
+                    {article.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-700 line-clamp-2 mt-2">
+                    {stripHtml(article.content).slice(0, 120)}...
+                  </p>
+
+                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-orange-700 border-b border-orange-700 group-hover:text-orange-500 group-hover:border-orange-500">
+                    Xem thêm →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
     </div>
   );
 }
