@@ -70,7 +70,7 @@ export default async function ArticleDetail({
     return (
         <article className="bg-white">
             {/* ===== HERO ===== */}
-            <div className="relative h-[420px] md:h-[520px]">
+            <div className="relative h-105 md:h-130">
                 <img
                     src={article.thumbnail}
                     alt={article.title}

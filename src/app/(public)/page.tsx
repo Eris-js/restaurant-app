@@ -15,6 +15,8 @@ import Promotion from '@/models/Promotion';
 import Link from 'next/link';
 import Image from 'next/image';
 
+export const revalidate = 60;
+
 async function getData() {
   await dbConnect();
   // Fetch active sliders
