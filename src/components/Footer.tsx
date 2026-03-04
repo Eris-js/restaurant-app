@@ -44,10 +44,6 @@ export default function Footer() {
               </div>
               <div className="flex space-x-4">
                 {/* Social Icons Placeholder */}
-
-                <div className="w-8 h-8 bg-gray-700 rounded-full hover:bg-black/50 flex items-center justify-center transition-colors">
-                  <a className="bi bi-twitter-zalo" href="https://zalo.me/0964113719" target="_blank" aria-label='Zalo' title='Zalo'></a>
-                </div>
                 <div className="w-8 h-8 bg-gray-700 rounded-full hover:bg-red-500 flex items-center justify-center transition-colors">
                   <a className="bi bi-youtube" href="#" target="_blank" aria-label='Youtube' title='Youtube'></a>
                 </div>

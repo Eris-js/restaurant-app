@@ -34,13 +34,13 @@ export default function Navbar() {
     },
     {
       name: 'Thực Đơn',
-      href: '#', // có thể để hoặc bỏ
-      children: [
-        { name: 'Alacarte', href: '/thuc-don/alacarte' },
-        { name: 'Điểm tâm', href: '/thuc-don/diem-tam' },
-        { name: 'Khách đoàn', href: '/thuc-don/khach-doan' },
-        { name: 'Đặt tiệc', href: '/thuc-don/dat-tiec' },
-      ],
+      href: '/thuc-don', // có thể để hoặc bỏ
+      // children: [
+      //   { name: 'Alacarte', href: '/thuc-don/alacarte' },
+      //   { name: 'Điểm tâm', href: '/thuc-don/diem-tam' },
+      //   { name: 'Khách đoàn', href: '/thuc-don/khach-doan' },
+      //   { name: 'Đặt tiệc', href: '/thuc-don/dat-tiec' },
+      // ],
     },
   ];
 

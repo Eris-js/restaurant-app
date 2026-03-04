@@ -37,7 +37,7 @@ export default function RestaurantSchema() {
                     "Sunday"
                 ],
                 "opens": "07:00",
-                "closes": "21:00"
+                "closes": "22:00"
             }
         ],
         "hasMap":
