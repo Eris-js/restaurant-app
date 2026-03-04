@@ -59,7 +59,7 @@ export default function AboutSection() {
                                         }`}
                                 >
                                     <Image
-                                        src={`/images/banner/${img}`}
+                                        src={`/images/${img}`}
                                         alt={`Hoa Viên Tri Kỷ ${idx + 1}`}
                                         fill
                                         className="object-cover transition-transform duration-700 hover:scale-105"
