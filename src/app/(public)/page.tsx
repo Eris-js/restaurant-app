@@ -38,6 +38,15 @@ async function getData() {
   };
 }
 
+function stripHtml(html: string) {
+  if (typeof window === "undefined") {
+    return html.replace(/<[^>]*>/g, "")
+  }
+
+  const doc = new DOMParser().parseFromString(html, "text/html")
+  return doc.body.textContent || ""
+}
+
 export default async function Home() {
   const { sliders, articles, promotions } = await getData();
 
@@ -85,60 +94,40 @@ export default async function Home() {
       )}
 
       {/* Articles Section */}
-      {articles.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          {/* Heading */}
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Tin tức & Bài viết
-            </h2>
-            <p className="mt-3 text-gray-500 max-w-xl mx-auto">
-              Cập nhật những câu chuyện mới nhất từ gian bếp và đội ngũ của chúng tôi
+      {articles.map((article: any) => (
+        <Link
+          key={article._id}
+          href={`/blog/${article.slug}`}
+          className="group block bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        >
+          {/* Thumbnail */}
+          <div className="relative h-56 overflow-hidden">
+            <Image
+              src={article.thumbnail}
+              alt={article.title}
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-700"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition" />
+          </div>
+
+          {/* Content */}
+          <div className="p-6">
+            <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition">
+              {article.title}
+            </h3>
+
+            <p className="text-sm text-gray-700 line-clamp-2 mt-2">
+              {stripHtml(article.content).slice(0, 100)}...
             </p>
+
+            <span className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-orange-700 border-b border-orange-700 group-hover:text-orange-500 group-hover:border-orange-500">
+              Xem thêm →
+            </span>
           </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {articles.map((article: any) => (
-              <a
-                key={article._id}
-                href={`/blog/${article.slug}`}
-                className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500"
-              >
-                {/* Thumbnail */}
-                <div className="relative h-56 overflow-hidden">
-                  <Image
-                    src={article.thumbnail}
-                    alt={article.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition" />
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-gray-900 line-clamp-2 group-hover:text-orange-600 transition">
-                    {article.content.slice(0, 100)}...
-                  </p>
-                  <Link
-                    href={`/blog/${article.slug}`}
-                    className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-orange-600 hover:text-orange-700"
-                  >
-                    Xem thêm
-                    <span className="transition group-hover:translate-x-1">→</span>
-                  </Link>
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
-
+        </Link>
+      ))}
     </div>
   );
 }

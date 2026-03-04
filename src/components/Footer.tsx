@@ -59,7 +59,12 @@ export default function Footer() {
 
           <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-600">
             © Hoa Viên Tri Kỷ 2026. All Rights Reserved.
-            <p>Designed by <a href='https://www.facebook.com/erisfake/' target='_blank' className='text-blue-700 hover:text-blue-500'>Quang Sáng</a></p>
+            <a href="https://www.facebook.com/erisfake/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 font-semibold border-b border-blue-700 hover:text-blue-500 hover:border-blue-500">
+              Designed by Quang Sáng
+            </a>
           </div>
         </div>
       </footer>
