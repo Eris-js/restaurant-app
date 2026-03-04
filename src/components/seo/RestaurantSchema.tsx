@@ -15,7 +15,7 @@ export default function RestaurantSchema() {
         "servesCuisine": ["Vietnamese", "Ẩm thực Việt"],
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "123 Hồng Hà, Phường 9, Quận Phú Nhuận",
+            "streetAddress": "123 Hồng Hà, Phường Đức Nhuận, Quận Phú Nhuận",
             "addressLocality": "Hồ Chí Minh",
             "addressCountry": "VN"
         },
@@ -37,7 +37,7 @@ export default function RestaurantSchema() {
                     "Sunday"
                 ],
                 "opens": "07:00",
-                "closes": "24:00"
+                "closes": "21:00"
             }
         ],
         "hasMap":

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Eye } from "lucide-react";
 
-const images = ["1.jpg", "5ac.jpg", "3ac.jpg", "7ac.jpg"];
+const images = ["001.jpg", "002.jpg", "003.jpg", "004.jpg"];
 
 export default function GallerySection() {
     return (
@@ -18,7 +18,7 @@ export default function GallerySection() {
                 >
                     <h2 className="text-3xl md:text-4xl font-bold uppercase inline-block">
                         Hình ảnh
-                        <span className="block w-20 h-[3px] bg-[#f2b84b] mt-3 mx-auto" />
+                        <span className="block w-20 h-0.75 bg-[#f2b84b] mt-3 mx-auto" />
                     </h2>
                     <p className="mt-4 text-zinc-700 max-w-xl mx-auto">
                         Những khoảnh khắc chân thực tại không gian Hoa Viên Tri Kỷ
@@ -29,7 +29,7 @@ export default function GallerySection() {
 
                     {/* Gallery */}
                     <div
-                        className="grid grid-cols-2 grid-rows-3 gap-4 h-[520px]"
+                        className="grid grid-cols-2 grid-rows-3 gap-4 h-130"
                         data-aos="zoom-in"
                         data-aos-duration="1200"
                     >

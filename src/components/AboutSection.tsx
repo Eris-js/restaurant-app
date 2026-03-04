@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+const images = ["001.jpg", "002.jpg", "003.jpg", "004.jpg"];
+
 export default function AboutSection() {
     return (
         <section id="info" className="py-24">
@@ -12,7 +14,7 @@ export default function AboutSection() {
                 >
                     <h2 className="text-3xl md:text-4xl font-bold uppercase inline-block relative">
                         Giới thiệu
-                        <span className="block w-20 h-[3px] bg-[#f2b84b] mt-3" />
+                        <span className="block w-20 h-0.75 bg-[#f2b84b] mt-3" />
                     </h2>
                 </div>
 
@@ -49,8 +51,8 @@ export default function AboutSection() {
                         data-aos="fade-left"
                         data-aos-duration="1000"
                     >
-                        <div className="grid grid-cols-2 grid-rows-3 gap-4 h-[520px]">
-                            {["1.jpg", "5ac.jpg", "3ac.jpg", "7ac.jpg"].map((img, idx) => (
+                        <div className="grid grid-cols-2 grid-rows-3 gap-4 h-130">
+                            {images.map((img, idx) => (
                                 <div
                                     key={idx}
                                     className={`relative rounded-xl overflow-hidden ${idx % 2 === 0 ? "row-span-2" : ""
